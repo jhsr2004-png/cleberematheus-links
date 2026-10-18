@@ -1,0 +1,289 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cléber & Mateus Alianças</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700&family=Montserrat:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background-color: #060608;
+            background-image: radial-gradient(circle at 50% 30%, #1c180e 0%, #060608 80%);
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 30px 18px;
+            color: #ffffff;
+            font-family: 'Montserrat', sans-serif;
+        }
+
+        .wrapper {
+            width: 100%;
+            max-width: 420px;
+            text-align: center;
+            background: #0d0d10;
+            padding: 40px 24px 32px 24px;
+            border-radius: 32px;
+            border: 1px solid #d4af37;
+            box-shadow: 0 0 30px rgba(212, 175, 55, 0.25), 0 20px 50px rgba(0, 0, 0, 0.9);
+        }
+
+        .avatar-box {
+            position: relative;
+            width: 104px;
+            height: 104px;
+            margin: 0 auto 24px auto;
+            border-radius: 50%;
+            padding: 3px;
+            background: linear-gradient(135deg, #f3e5ab, #d4af37, #8c7835);
+            box-shadow: 0 0 20px rgba(212, 175, 55, 0.3);
+        }
+
+        .avatar-img {
+            width: 100%;
+            height: 100%;
+            border-radius: 50%;
+            object-fit: cover;
+            background: #111111;
+            display: block;
+        }
+
+        h1 {
+            font-family: 'Cinzel', serif;
+            font-size: 24px;
+            font-weight: 600;
+            letter-spacing: 2px;
+            color: #ffffff;
+            text-transform: uppercase;
+            margin-bottom: 8px;
+        }
+
+        .tagline {
+            font-size: 12px;
+            font-weight: 400;
+            color: #d4af37;
+            letter-spacing: 1.5px;
+            text-transform: uppercase;
+            margin-bottom: 6px;
+        }
+
+        .divider {
+            width: 50px;
+            height: 1px;
+            background: #d4af37;
+            margin: 14px auto;
+            opacity: 0.6;
+        }
+
+        .connect-text {
+            font-size: 11px;
+            font-weight: 300;
+            color: #a0a0a0;
+            letter-spacing: 1px;
+            margin-bottom: 30px;
+        }
+
+        .links-list {
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+        }
+
+        .link-card {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            width: 100%;
+            padding: 17px 22px;
+            border-radius: 16px;
+            text-decoration: none;
+            color: #ececec !important;
+            font-size: 13px;
+            font-weight: 500;
+            letter-spacing: 0.8px;
+            background: #15151a;
+            border: 1px solid rgba(212, 175, 55, 0.3);
+            transition: all 0.3s ease;
+        }
+
+        .link-card:hover {
+            border-color: #d4af37;
+            background: #1e1e24;
+            transform: translateY(-2px);
+            box-shadow: 0 8px 25px rgba(212, 175, 55, 0.2);
+        }
+
+        .link-card.primary {
+            background: linear-gradient(135deg, #f3e5ab 0%, #d4af37 100%);
+            color: #050505 !important;
+            border: none;
+            font-weight: 600;
+            box-shadow: 0 6px 20px rgba(212, 175, 55, 0.35);
+        }
+
+        .link-card.primary i {
+            color: #050505;
+        }
+
+        .link-card.primary:hover {
+            background: #ffe875;
+            box-shadow: 0 8px 28px rgba(212, 175, 55, 0.5);
+        }
+
+        .link-left {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+
+        .link-left i {
+            font-size: 18px;
+            width: 20px;
+            text-align: center;
+        }
+
+        .whatsapp-icon { color: #25d366; }
+        .instagram-icon { color: #e1306c; }
+        .google-icon { color: #fbbc05; }
+        .maps-icon { color: #ea4335; }
+        .wifi-icon { color: #00d2ff; }
+
+        .arrow {
+            font-size: 12px;
+            opacity: 0.5;
+            transition: transform 0.3s ease;
+        }
+
+        .link-card:hover .arrow {
+            transform: translateX(4px);
+            opacity: 1;
+        }
+
+        .footer-socials {
+            display: flex;
+            justify-content: center;
+            gap: 18px;
+            margin: 36px 0 20px 0;
+        }
+
+        .social-circle {
+            width: 44px;
+            height: 44px;
+            border-radius: 50%;
+            background: #15151a;
+            border: 1px solid rgba(212, 175, 55, 0.4);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #d4af37;
+            text-decoration: none;
+            font-size: 16px;
+            transition: all 0.3s ease;
+        }
+
+        .social-circle:hover {
+            background: #d4af37;
+            color: #050505;
+            transform: translateY(-2px);
+        }
+
+        footer {
+            font-size: 10px;
+            font-weight: 300;
+            color: #777777;
+            letter-spacing: 1.5px;
+            text-transform: uppercase;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="wrapper">
+
+        <!-- Logo da Marca -->
+        <div class="avatar-box">
+            <img src="https://i.postimg.cc/j5bXgb2F/IMG-4019.jpg" alt="Cléber & Mateus Alianças" class="avatar-img">
+        </div>
+
+        <h1>Cléber & Mateus</h1>
+        <p class="tagline">Presente nos momentos inesquecíveis</p>
+        <div class="divider"></div>
+        <p class="connect-text">Conecte-se conosco abaixo:</p>
+
+        <div class="links-list">
+            <!-- 1. WhatsApp -->
+            <a href="https://wa.me/557798683796" class="link-card primary" target="_blank" rel="noopener noreferrer">
+                <div class="link-left">
+                    <i class="fa-brands fa-whatsapp"></i>
+                    <span>Atendimento no WhatsApp</span>
+                </div>
+                <i class="fa-solid fa-chevron-right arrow"></i>
+            </a>
+
+            <!-- 2. Instagram -->
+            <a href="https://www.instagram.com/cleberemateus" class="link-card" target="_blank" rel="noopener noreferrer">
+                <div class="link-left">
+                    <i class="fa-brands fa-instagram instagram-icon"></i>
+                    <span>Nosso Instagram</span>
+                </div>
+                <i class="fa-solid fa-chevron-right arrow"></i>
+            </a>
+
+            <!-- 3. Avaliação no Google -->
+            <a href="https://search.google.com/local/writereview?placeid=ChIJ3RubgLE7RgcRL-VPKPQlyow" class="link-card" target="_blank" rel="noopener noreferrer">
+                <div class="link-left">
+                    <i class="fa-solid fa-star google-icon"></i>
+                    <span>Avalie Nosso Atendimento</span>
+                </div>
+                <i class="fa-solid fa-chevron-right arrow"></i>
+            </a>
+
+            <!-- 4. Localização no Maps -->
+            <a href="https://maps.google.com/maps/place//data=!4m2!3m1!1s0x7463bb1809b1bdd:0x8cca25f4284fe52f?entry=s&sa=X&ved=2ahUKEwj56dK1pcKXAxWsPrkGHXtRMnEQ4kB6BAhcEAA&hl=pt" class="link-card" target="_blank" rel="noopener noreferrer">
+                <div class="link-left">
+                    <i class="fa-solid fa-location-dot maps-icon"></i>
+                    <span>Localização da Loja</span>
+                </div>
+                <i class="fa-solid fa-chevron-right arrow"></i>
+            </a>
+
+            <!-- 5. Wi-Fi -->
+            <a href="WIFI:S:CleberEMatheusAliancas;T:WPA;P:Cm30280147@;;" class="link-card" target="_blank" rel="noopener noreferrer">
+                <div class="link-left">
+                    <i class="fa-solid fa-wifi wifi-icon"></i>
+                    <span>Conecte-se ao Nosso Wi-Fi</span>
+                </div>
+                <i class="fa-solid fa-chevron-right arrow"></i>
+            </a>
+        </div>
+
+        <div class="footer-socials">
+            <a href="https://wa.me/557730847090" class="social-circle" target="_blank" rel="noopener noreferrer">
+                <i class="fa-brands fa-whatsapp"></i>
+            </a>
+            <a href="https://www.instagram.com/cleberemateusaliancas" class="social-circle" target="_blank" rel="noopener noreferrer">
+                <i class="fa-brands fa-instagram"></i>
+            </a>
+            <a href="https://maps.google.com/?q=Alameda+Ramiro+Santos,+7A+-+Centro,+Vitória+da+Conquista+-+BA" class="social-circle" target="_blank" rel="noopener noreferrer">
+                <i class="fa-solid fa-location-dot"></i>
+            </a>
+        </div>
+
+        <footer>
+            Cléber & Mateus Alianças • Todos os direitos reservados
+        </footer>
+
+    </div>
+
+</body>
+</html>
