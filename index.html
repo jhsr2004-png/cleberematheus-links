@@ -114,6 +114,7 @@
             background: #15151a;
             border: 1px solid rgba(212, 175, 55, 0.3);
             transition: all 0.3s ease;
+            cursor: pointer;
         }
 
         .link-card:hover {
@@ -204,6 +205,135 @@
             letter-spacing: 1.5px;
             text-transform: uppercase;
         }
+
+        /* --- Estilos do Modal do Wi-Fi --- */
+        .modal-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.85);
+            backdrop-filter: blur(8px);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            opacity: 0;
+            visibility: hidden;
+            transition: all 0.3s ease;
+            z-index: 999;
+            padding: 20px;
+        }
+
+        .modal-overlay.active {
+            opacity: 1;
+            visibility: visible;
+        }
+
+        .modal-content {
+            background: #121216;
+            border: 1px solid #d4af37;
+            border-radius: 24px;
+            padding: 28px 22px;
+            width: 100%;
+            max-width: 360px;
+            text-align: center;
+            box-shadow: 0 10px 40px rgba(212, 175, 55, 0.3);
+            position: relative;
+            transform: scale(0.9);
+            transition: transform 0.3s ease;
+        }
+
+        .modal-overlay.active .modal-content {
+            transform: scale(1);
+        }
+
+        .close-btn {
+            position: absolute;
+            top: 15px;
+            right: 18px;
+            background: none;
+            border: none;
+            color: #888;
+            font-size: 20px;
+            cursor: pointer;
+        }
+
+        .wifi-modal-icon {
+            font-size: 32px;
+            color: #d4af37;
+            margin-bottom: 12px;
+        }
+
+        .modal-title {
+            font-family: 'Cinzel', serif;
+            font-size: 18px;
+            color: #ffffff;
+            margin-bottom: 16px;
+        }
+
+        .info-box {
+            background: #1a1a22;
+            border: 1px solid rgba(212, 175, 55, 0.2);
+            border-radius: 12px;
+            padding: 12px 14px;
+            margin-bottom: 12px;
+            text-align: left;
+        }
+
+        .info-label {
+            font-size: 10px;
+            text-transform: uppercase;
+            color: #888;
+            letter-spacing: 1px;
+            margin-bottom: 4px;
+        }
+
+        .info-val {
+            font-size: 13px;
+            font-weight: 600;
+            color: #ffffff;
+            word-break: break-all;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .copy-btn {
+            background: #d4af37;
+            color: #050505;
+            border: none;
+            padding: 6px 12px;
+            border-radius: 8px;
+            font-size: 11px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: background 0.2s ease;
+        }
+
+        .copy-btn:hover {
+            background: #ffe875;
+        }
+
+        .qr-code-box {
+            background: #ffffff;
+            padding: 12px;
+            border-radius: 16px;
+            display: inline-block;
+            margin: 14px 0 8px 0;
+        }
+
+        .qr-code-box img {
+            width: 130px;
+            height: 130px;
+            display: block;
+        }
+
+        .qr-subtext {
+            font-size: 11px;
+            color: #aaa;
+            margin-top: 4px;
+        }
     </style>
 </head>
 <body>
@@ -257,24 +387,24 @@
                 <i class="fa-solid fa-chevron-right arrow"></i>
             </a>
 
-            <!-- 5. Wi-Fi -->
-            <a href="WIFI:S:CleberEMatheusAliancas;T:WPA;P:Cm30280147@;;" class="link-card" target="_blank" rel="noopener noreferrer">
+            <!-- 5. Wi-Fi (Abre o Modal) -->
+            <div class="link-card" onclick="openWifiModal()">
                 <div class="link-left">
                     <i class="fa-solid fa-wifi wifi-icon"></i>
                     <span>Conecte-se ao Nosso Wi-Fi</span>
                 </div>
                 <i class="fa-solid fa-chevron-right arrow"></i>
-            </a>
+            </div>
         </div>
 
         <div class="footer-socials">
-            <a href="https://wa.me/557730847090" class="social-circle" target="_blank" rel="noopener noreferrer">
+            <a href="https://wa.me/557798683796" class="social-circle" target="_blank" rel="noopener noreferrer">
                 <i class="fa-brands fa-whatsapp"></i>
             </a>
-            <a href="https://www.instagram.com/cleberemateusaliancas" class="social-circle" target="_blank" rel="noopener noreferrer">
+            <a href="https://www.instagram.com/cleberemateus" class="social-circle" target="_blank" rel="noopener noreferrer">
                 <i class="fa-brands fa-instagram"></i>
             </a>
-            <a href="https://maps.google.com/?q=Alameda+Ramiro+Santos,+7A+-+Centro,+Vitória+da+Conquista+-+BA" class="social-circle" target="_blank" rel="noopener noreferrer">
+            <a href="https://maps.google.com/maps/place//data=!4m2!3m1!1s0x7463bb1809b1bdd:0x8cca25f4284fe52f?entry=s&sa=X&ved=2ahUKEwj56dK1pcKXAxWsPrkGHXtRMnEQ4kB6BAhcEAA&hl=pt" class="social-circle" target="_blank" rel="noopener noreferrer">
                 <i class="fa-solid fa-location-dot"></i>
             </a>
         </div>
@@ -284,6 +414,60 @@
         </footer>
 
     </div>
+
+    <!-- Modal Wi-Fi -->
+    <div class="modal-overlay" id="wifiModal" onclick="closeWifiModal(event)">
+        <div class="modal-content" onclick="event.stopPropagation()">
+            <button class="close-btn" onclick="closeWifiModal(event)">&times;</button>
+            <i class="fa-solid fa-wifi wifi-modal-icon"></i>
+            <h3 class="modal-title">Wi-Fi Clientes</h3>
+            
+            <div class="info-box">
+                <div class="info-label">Nome da Rede (SSID)</div>
+                <div class="info-val">
+                    <span>CleberEMatheusAliancas</span>
+                </div>
+            </div>
+
+            <div class="info-box">
+                <div class="info-label">Senha do Wi-Fi</div>
+                <div class="info-val">
+                    <span id="wifiPassword">Cm30280147@</span>
+                    <button class="copy-btn" id="copyBtn" onclick="copyPassword()">Copiar</button>
+                </div>
+            </div>
+
+            <div class="qr-code-box">
+                <img src="https://api.qrserver.com/v1/create-qr-code/?size=150x150&data=WIFI%3AS%3ACleberEMatheusAliancas%3BT%3AWPA%3BP%3ACm30280147%40%3B%3B" alt="QR Code Wi-Fi">
+            </div>
+            <p class="qr-subtext">Aponte a câmera do celular no QR Code para conectar automaticamente</p>
+        </div>
+    </div>
+
+    <script>
+        function openWifiModal() {
+            document.getElementById('wifiModal').classList.add('active');
+        }
+
+        function closeWifiModal(event) {
+            document.getElementById('wifiModal').classList.remove('active');
+        }
+
+        function copyPassword() {
+            const pass = document.getElementById('wifiPassword').innerText;
+            navigator.clipboard.writeText(pass).then(() => {
+                const btn = document.getElementById('copyBtn');
+                btn.innerText = 'Copiado!';
+                btn.style.background = '#25d366';
+                btn.style.color = '#fff';
+                setTimeout(() => {
+                    btn.innerText = 'Copiar';
+                    btn.style.background = '#d4af37';
+                    btn.style.color = '#050505';
+                }, 2000);
+            });
+        }
+    </script>
 
 </body>
 </html>
